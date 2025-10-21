@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Soutien — Enfants du Bénin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --accent-1: #0f766e;
+      --accent-2: #06b6d4;
+      --card: #ffffffcc;
+    }
+    body{ background: linear-gradient(180deg,#e6fffa 0%,#ffffff 40%); font-family: Inter, system-ui, Arial, sans-serif; color:#0f172a; }
+    .hero{ background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:white; padding:48px 16px; border-radius:12px; box-shadow:0 8px 30px rgba(2,6,23,0.12); }
+    .impact-card{ background:var(--card); border:none; border-radius:12px; box-shadow:0 6px 20px rgba(2,6,23,0.06); }
+    .donation-amounts .btn{ border-radius:999px; }
+    .mm-operator{ cursor:pointer; border-radius:8px; border:1px solid #e9eef2; padding:10px; display:flex; align-items:center; gap:10px; }
+    .mm-operator.active{ box-shadow:0 6px 18px rgba(2,6,23,0.06); border-color:var(--accent-1); }
+    footer{ opacity:0.85 }
+    @media (min-width:992px){ .container-small{ max-width:880px } }
+  </style>
+</head>
+<body>
+  <header class="py-3 mb-4">
+    <div class="container container-small">
+      <nav class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+          <div style="width:48px;height:48px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent-1);font-weight:700">SB</div>
+          <div><strong>Solidarité Bénin</strong><br><small class="text-muted">Entraide & éducation</small></div>
+        </div>
+        <div><a class="btn btn-sm btn-outline-primary" href="#faire-un-don">Faire un don</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container container-small">
+    <section class="hero mb-4">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="mb-2">Aidez les enfants défavorisés et orphelins du Bénin</h1>
+          <p class="lead mb-3">Offrez accès à l’éducation, aux repas et aux soins. Chaque don compte — même 5 000 CFA change une vie.</p>
+          <p class="mb-0"><strong>Options suggérées :</strong> 5 000 CFA (kit scolaire) · 10 000 CFA (repas mensuel) · 50 000 CFA (soins médicaux)</p>
+        </div>
+        <div class="col-lg-5 text-center mt-4 mt-lg-0">
+          <img src="benin-children.jpg" alt="Enfants du Bénin" class="img-fluid rounded" style="max-height:200px; box-shadow:0 8px 30px rgba(2,6,23,0.12);">
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <div class="row gy-3">
+        <div class="col-md-4"><div class="impact-card p-3 text-center"><h5 class="mb-1">5 000 CFA</h5><small class="text-muted">Un kit scolaire</small></div></div>
+        <div class="col-md-4"><div class="impact-card p-3 text-center"><h5 class="mb-1">10 000 CFA</h5><small class="text-muted">Repas pour 1 mois</small></div></div>
+        <div class="col-md-4"><div class="impact-card p-3 text-center"><h5 class="mb-1">50 000 CFA</h5><small class="text-muted">Soins médicaux 1 mois</small></div></div>
+      </div>
+    </section>
+
+    <section id="faire-un-don" class="mb-5">
+      <div class="card p-4">
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-md-7">
+            <h3 class="mb-2">Faire un don — Mobile Money</h3>
+            <p class="text-muted mb-3">Choisissez MTN Bénin, Moov Bénin ou Celtiis, entrez votre numéro Mobile Money et confirmez. Le paiement est traité via l'opérateur (implémentation serveur requise).</p>
+
+            <div class="donation-amounts mb-3 d-flex gap-2 flex-wrap">
+              <button type="button" class="btn btn-outline-primary" data-amount="5000">5 000 CFA</button>
+              <button type="button" class="btn btn-outline-primary" data-amount="10000">10 000 CFA</button>
+              <button type="button" class="btn btn-outline-primary" data-amount="50000">50 000 CFA</button>
+              <button type="button" class="btn btn-outline-secondary" data-amount="custom">Autre</button>
+            </div>
+
+            <div id="custom-wrapper" style="display:none" class="mb-3">
+              <label class="form-label">Montant personnalisé (CFA)</label>
+              <input id="customAmount" type="number" class="form-control" min="100" placeholder="Ex : 7500">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Choisissez votre opérateur Mobile Money</label>
+              <div class="d-flex gap-2">
+                <div class="mm-operator" data-operator="mtn">
+                  <img src="mtn-logo.png" alt="MTN" style="height:28px"><strong>MTN Bénin</strong>
+                </div>
+                <div class="mm-operator" data-operator="moov">
+                  <img src="moov-logo.png" alt="Moov" style="height:28px"><strong>Moov Bénin</strong>
+                </div>
+                <div class="mm-operator" data-operator="celtiis">
+                  <img src="celtiis-logo.png" alt="Celtiis" style="height:28px"><strong>Celtiis</strong>
+                </div>
+              </div>
+              <input type="hidden" id="selectedOperator" value="mtn">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Numéro Mobile Money (format local)</label>
+              <input id="mmPhone" type="tel" class="form-control" placeholder="Ex : 679123456" required>
+              <div class="form-text">Le numéro doit être associé à votre compte Mobile Money.</div>
+            </div>
+
+            <form id="donationForm" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Nom (facultatif)</label>
+                <input type="text" id="donorName" class="form-control" placeholder="Votre nom">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email (pour reçu)</label>
+                <input type="email" id="donorEmail" class="form-control" placeholder="email@exemple.com" required>
+                <div class="invalid-feedback">Veuillez saisir un email valide.</div>
+              </div>
+
+              <div id="mm-feedback" class="mb-3 text-center small text-muted">Montant et opérateur sélectionnés apparaissent dans le résumé.</div>
+
+              <button type="submit" class="btn btn-gradient btn-primary w-100" style="background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:white;border:none;">
+                Payer avec Mobile Money
+              </button>
+            </form>
+          </div>
+
+          <div class="col-12 col-md-5">
+            <div class="p-3 border rounded">
+              <h6 class="mb-2">Résumé</h6>
+              <p class="mb-1"><strong id="summaryAmount">5 000 CFA</strong></p>
+              <p class="text-muted small mb-2" id="summaryNote">Kit scolaire</p>
+              <p class="mb-1"><strong id="summaryOperator">MTN Bénin</strong></p>
+              <p class="text-muted small mb-2" id="summaryPhone">Numéro : —</p>
+              <div class="d-grid gap-2">
+                <small class="text-muted">Après soumission, vous recevrez une demande de paiement via l'opérateur (USSD / confirmation selon opérateur). Reçu envoyé par email.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4 text-center text-muted">© 2025 Solidarité Bénin — Merci pour votre soutien</footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="payment.js"></script>
+</body>
+</html>
