@@ -1,1049 +1,342 @@
-// ...existing code...
 <!DOCTYPE html>
+<!-- saved from url=(0058) -->
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Collecte de dons — Solidarité Bénin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collecte pour les Orphelins du Bénin - Viviane Blé</title>
+  <!-- Police -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Tailwind (ou remplacez par Bootstrap si vous préférez) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Icônes (Remixicon) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+
+  <!-- Petites classes utilitaires pour .primary utilisées dans le HTML -->
   <style>
-    :root{
-      --accent:#0f766e;
-      --accent-2:#06b6d4;
-      --muted:#6b7280;
-    }
-    body{ font-family: Inter, system-ui, Arial, sans-serif; background:#f8fafb; color:#0f172a; }
-    .site-header{ position:sticky; top:0; z-index:1020; background:#fff; box-shadow:0 6px 18px rgba(2,6,23,0.04); }
-    .brand-logo{ width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; display:flex;align-items:center;justify-content:center;font-weight:700; }
-    .hero{ background: linear-gradient(90deg, rgba(15,118,110,0.06), rgba(6,182,212,0.04)); border-radius:12px; padding:36px; margin-top:18px; box-shadow:0 10px 30px rgba(2,6,23,0.04); }
-    .hero h1{ font-weight:700; letter-spacing:-0.5px; }
-    .impact-card{ background:#fff; border-radius:10px; padding:18px; box-shadow:0 8px 24px rgba(2,6,23,0.03); }
-    .amount-btn{ border-radius:999px; }
-    .mm-operator{ cursor:pointer; border-radius:10px; padding:10px 12px; display:flex; gap:10px; align-items:center; border:1px solid #eef2f6; background:#fff; }
-    .mm-operator.active{ border-color:var(--accent); box-shadow:0 8px 20px rgba(15,118,110,0.06); transform:translateY(-2px); }
-    .summary-box{ background:#fff; border-radius:10px; padding:16px; box-shadow:0 8px 20px rgba(2,6,23,0.03); }
-    footer{ opacity:0.9 }
-    @media (max-width:767px){ .hero{ padding:20px; } }
+    :root{ --primary:#06b6d4; --primary-dark:#0596ab; --muted:#6b7280; }
+    .text-primary{ color:var(--primary) !important; }
+    .bg-primary{ background:var(--primary) !important; }
+    .bg-primary-600{ background:var(--primary-dark) !important; }
+    .rounded-button{ border-radius:12px !important; }
+    .font-pacifico{ font-family:'Pacifico', cursive; }
   </style>
 </head>
-<body>
-  <header class="site-header">
-    <div class="container py-2">
-      <nav class="navbar navbar-expand-lg p-0">
-        <a class="navbar-brand d-flex align-items-center gap-3" href="#accueil">
-          <div class="brand-logo">SB</div>
-          <div class="d-none d-sm-block">
-            <div style="font-weight:700">Collecte de dons</div>
-            <small class="text-muted">Solidarité Bénin</small>
-          </div>
-        </a>
 
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Basculer la navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<body class="bg-white text-gray-900">
+<nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="font-['Pacifico'] text-2xl text-primary">Viviane Blé</div>
+            
+            <!-- Bouton menu mobile -->
+            <button class="md:hidden text-gray-500 hover:text-primary focus:outline-none" 
+                    onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
 
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto align-items-lg-center">
-            <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" href="#evenement">À propos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faire-un-don">Faire un don</a></li>
-          </ul>
+            <!-- Menu desktop -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Accueil</a>
+                <a href="#apropos" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">À propos</a>
+                <a href="#don" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Faire un don</a>
+            </div>
         </div>
-      </nav>
     </div>
-  </header>
 
-  <main class="container my-4" id="accueil">
-    <!-- HERO -->
-    <section class="hero d-flex align-items-center gap-4">
-      <div class="hero-left">
-        <h1 class="display-6">Collecte de dons</h1>
-        <p class="lead text-muted mb-3">Aidez les enfants défavorisés et orphelins du Bénin — éducation, repas, soins. Chaque don compte.</p>
-        <div class="d-flex gap-2 flex-wrap">
-          <a href="#faire-un-don" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Faire un don</a>
-          <a href="#evenement" class="btn btn-outline-primary">En savoir plus</a>
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
+            <a href="#accueil" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">Accueil</a>
+            <a href="#apropos" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">À propos</a>
+            <a href="#don" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">Faire un don</a>
         </div>
-      </div>
-      <div class="ms-auto d-none d-md-block text-center">
-        <img src="benin-children.jpg" alt="Enfants du Bénin" style="width:220px;height:140px;object-fit:cover;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,0.06)">
-      </div>
-    </section>
-
-    <!-- SECTION 1: DÉTAIL DE L'ÉVÉNEMENT -->
-    <section id="evenement" class="mt-5">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <h2>À propos de la collecte</h2>
-          <p class="text-muted">Cette collecte finance des actions concrètes pour les enfants vulnérables du Bénin : kits scolaires, repas, soins médicaux et soutien aux orphelinats et familles d’accueil.</p>
-          <ul class="list-unstyled text-muted">
-            <li class="mb-2"><strong>Objectif :</strong> soutenir l'éducation et la santé des enfants</li>
-            <li class="mb-2"><strong>Période :</strong> collecte permanente</li>
-            <li class="mb-2"><strong>Transparence :</strong> reçus envoyés par email et rapports réguliers</li>
-          </ul>
-          <a href="#faire-un-don" class="btn btn-outline-success">Contribuer maintenant</a>
-        </div>
-        <div class="col-lg-6">
-          <div class="impact-card">
-            <h5 class="mb-3">L'impact de vos dons</h5>
-            <div class="row text-center">
-              <div class="col-4">
-                <div class="fw-bold">5 000</div>
-                <div class="text-muted small">CFA — kit scolaire</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">10 000</div>
-                <div class="text-muted small">CFA — repas / mois</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">50 000</div>
-                <div class="text-muted small">CFA — soins / mois</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: FAIRE UN DON -->
-    <section id="faire-un-don" class="mt-5">
-      <div class="row g-4">
-        <div class="col-lg-8">
-          <div class="card p-4">
-            <h4 class="mb-3">Faire un don</h4>
-
-            <div class="mb-3">
-              <label class="form-label">Montant suggéré</label>
-              <div class="d-flex gap-2 flex-wrap donation-amounts">
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="5000">5 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="10000">10 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="50000">50 000 CFA</button>
-                <button type="button" class="btn btn-outline-secondary amount-btn" data-amount="custom">Autre</button>
-              </div>
-            </div>
-
-            <div id="custom-wrapper" class="mb-3" style="display:none">
-              <label class="form-label">Montant personnalisé (CFA)</label>
-              <input id="customAmount" type="number" class="form-control" min="100" placeholder="Ex : 7500">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Opérateur Mobile Money</label>
-              <div class="d-flex gap-2">
-                <div class="mm-operator p-2" data-op="mtn"><img src="mtn-logo.png" alt="" style="height:22px"> MTN</div>
-                <div class="mm-operator p-2" data-op="moov"><img src="moov-logo.png" alt="" style="height:22px"> Moov</div>
-                <div class="mm-operator p-2" data-op="celtiis"><img src="celtiis-logo.png" alt="" style="height:22px"> Celtiis</div>
-              </div>
-              <input type="hidden" id="selectedOperator" value="mtn">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Numéro Mobile Money</label>
-              <input id="mmPhone" type="tel" class="form-control" placeholder="Ex : 679123456" required>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Email (pour reçu)</label>
-              <input id="donorEmail" type="email" class="form-control" placeholder="email@exemple.com" required>
-            </div>
-
-            <div class="mb-3">
-              <button id="submitBtn" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Payer avec Mobile Money</button>
-            </div>
-
-            <small class="text-muted">Note : le traitement réel nécessite un endpoint serveur. Ici la soumission est simulée.</small>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="summary-box">
-            <h6>Résumé</h6>
-            <p class="mb-1"><strong id="summaryAmount">5 000 CFA</strong></p>
-            <p class="text-muted small mb-2" id="summaryNote">Kit scolaire</p>
-            <p class="mb-1"><strong id="summaryOperator">MTN</strong></p>
-            <p class="text-muted small mb-2" id="summaryPhone">Numéro : —</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="mt-5">
-      <div class="card p-3">
-        <h6>Contact</h6>
-        <p class="mb-0 text-muted">Email : contact@solidaritebenin.org — Téléphone : +229 00 00 00 00</p>
-      </div>
-    </section>
-
-    <footer class="text-center py-4 mt-4">
-      © 2025 Solidarité Bénin — Merci pour votre soutien
-    </footer>
-  </main>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Smooth scroll for internal links
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', (e) => {
-          const target = document.querySelector(a.getAttribute('href'));
-          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-      });
-
-      // Amount selection
-      const amountBtns = document.querySelectorAll('.amount-btn');
-      const customWrapper = document.getElementById('custom-wrapper');
-      const customInput = document.getElementById('customAmount');
-      const summaryAmount = document.getElementById('summaryAmount');
-      const summaryNote = document.getElementById('summaryNote');
-
-      function setAmount(val){
-        if(val === 'custom'){ customWrapper.style.display = 'block'; summaryAmount.textContent = 'Montant personnalisé'; summaryNote.textContent = ''; return; }
-        customWrapper.style.display = 'none';
-        summaryAmount.textContent = new Intl.NumberFormat('fr-FR').format(val) + ' CFA';
-        summaryNote.textContent = val == 5000 ? 'Kit scolaire' : val == 10000 ? 'Repas 1 mois' : val == 50000 ? 'Soins médicaux 1 mois' : '';
-      }
-
-      amountBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          amountBtns.forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline-primary'); });
-          btn.classList.remove('btn-outline-primary'); btn.classList.add('btn-primary');
-          setAmount(btn.dataset.amount);
-        });
-      });
-
-      // initial state
-      if(amountBtns.length){
-        amountBtns[0].classList.remove('btn-outline-primary');
-        amountBtns[0].classList.add('btn-primary');
-        setAmount(5000);
-      }
-
-      // Mobile Money operator selection
-      const mmOps = document.querySelectorAll('.mm-operator');
-      const selectedOperator = document.getElementById('selectedOperator');
-      const summaryOperator = document.getElementById('summaryOperator');
-      const summaryPhone = document.getElementById('summaryPhone');
-
-      mmOps.forEach(op => {
-        op.addEventListener('click', () => {
-          mmOps.forEach(x => x.classList.remove('active'));
-          op.classList.add('active');
-          selectedOperator.value = op.dataset.op;
-          summaryOperator.textContent = op.textContent.trim();
-        });
-      });
-      // default operator
-      const def = document.querySelector('.mm-operator[data-op="mtn"]');
-      if(def) def.classList.add('active');
-
-      // submit (simulated)
-      document.getElementById('submitBtn').addEventListener('click', () => {
-        const email = document.getElementById('donorEmail');
-        const phone = document.getElementById('mmPhone').value.trim();
-        let amountBtn = document.querySelector('.amount-btn.btn-primary');
-        let amount = amountBtn ? amountBtn.dataset.amount : '5000';
-        if(amount === 'custom'){ amount = parseInt(customInput.value,10) || 0; }
-        if(!email.checkValidity()){ alert('Entrez un email valide.'); email.focus(); return; }
-        if(!phone){ alert('Entrez votre numéro Mobile Money.'); return; }
-        summaryPhone.textContent = 'Numéro : ' + phone;
-        alert('Simulation : demande de paiement envoyée.\nMontant : ' + new Intl.NumberFormat('fr-FR').format(amount) + ' CFA\nOpérateur : ' + selectedOperator.value + '\nEmail : ' + email.value);
-      });
-    });
-  </script>
-</body>
-</html>
-// ...existing code...
-```// filepath: c:\Users\Benjamin\Desktop\don\index.html
-// ...existing code...
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Collecte de dons — Solidarité Bénin</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  <style>
-    :root{
-      --accent:#0f766e;
-      --accent-2:#06b6d4;
-      --muted:#6b7280;
-    }
-    body{ font-family: Inter, system-ui, Arial, sans-serif; background:#f8fafb; color:#0f172a; }
-    .site-header{ position:sticky; top:0; z-index:1020; background:#fff; box-shadow:0 6px 18px rgba(2,6,23,0.04); }
-    .brand-logo{ width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; display:flex;align-items:center;justify-content:center;font-weight:700; }
-    .hero{ background: linear-gradient(90deg, rgba(15,118,110,0.06), rgba(6,182,212,0.04)); border-radius:12px; padding:36px; margin-top:18px; box-shadow:0 10px 30px rgba(2,6,23,0.04); }
-    .hero h1{ font-weight:700; letter-spacing:-0.5px; }
-    .impact-card{ background:#fff; border-radius:10px; padding:18px; box-shadow:0 8px 24px rgba(2,6,23,0.03); }
-    .amount-btn{ border-radius:999px; }
-    .mm-operator{ cursor:pointer; border-radius:10px; padding:10px 12px; display:flex; gap:10px; align-items:center; border:1px solid #eef2f6; background:#fff; }
-    .mm-operator.active{ border-color:var(--accent); box-shadow:0 8px 20px rgba(15,118,110,0.06); transform:translateY(-2px); }
-    .summary-box{ background:#fff; border-radius:10px; padding:16px; box-shadow:0 8px 20px rgba(2,6,23,0.03); }
-    footer{ opacity:0.9 }
-    @media (max-width:767px){ .hero{ padding:20px; } }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="container py-2">
-      <nav class="navbar navbar-expand-lg p-0">
-        <a class="navbar-brand d-flex align-items-center gap-3" href="#accueil">
-          <div class="brand-logo">SB</div>
-          <div class="d-none d-sm-block">
-            <div style="font-weight:700">Collecte de dons</div>
-            <small class="text-muted">Solidarité Bénin</small>
-          </div>
-        </a>
-
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Basculer la navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto align-items-lg-center">
-            <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" href="#evenement">À propos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faire-un-don">Faire un don</a></li>
-          </ul>
-        </div>
-      </nav>
     </div>
-  </header>
+</nav>
 
-  <main class="container my-4" id="accueil">
-    <!-- HERO -->
-    <section class="hero d-flex align-items-center gap-4">
-      <div class="hero-left">
-        <h1 class="display-6">Collecte de dons</h1>
-        <p class="lead text-muted mb-3">Aidez les enfants défavorisés et orphelins du Bénin — éducation, repas, soins. Chaque don compte.</p>
-        <div class="d-flex gap-2 flex-wrap">
-          <a href="#faire-un-don" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Faire un don</a>
-          <a href="#evenement" class="btn btn-outline-primary">En savoir plus</a>
-        </div>
-      </div>
-      <div class="ms-auto d-none d-md-block text-center">
-        <img src="benin-children.jpg" alt="Enfants du Bénin" style="width:220px;height:140px;object-fit:cover;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,0.06)">
-      </div>
-    </section>
-
-    <!-- SECTION 1: DÉTAIL DE L'ÉVÉNEMENT -->
-    <section id="evenement" class="mt-5">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <h2>À propos de la collecte</h2>
-          <p class="text-muted">Cette collecte finance des actions concrètes pour les enfants vulnérables du Bénin : kits scolaires, repas, soins médicaux et soutien aux orphelinats et familles d’accueil.</p>
-          <ul class="list-unstyled text-muted">
-            <li class="mb-2"><strong>Objectif :</strong> soutenir l'éducation et la santé des enfants</li>
-            <li class="mb-2"><strong>Période :</strong> collecte permanente</li>
-            <li class="mb-2"><strong>Transparence :</strong> reçus envoyés par email et rapports réguliers</li>
-          </ul>
-          <a href="#faire-un-don" class="btn btn-outline-success">Contribuer maintenant</a>
-        </div>
-        <div class="col-lg-6">
-          <div class="impact-card">
-            <h5 class="mb-3">L'impact de vos dons</h5>
-            <div class="row text-center">
-              <div class="col-4">
-                <div class="fw-bold">5 000</div>
-                <div class="text-muted small">CFA — kit scolaire</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">10 000</div>
-                <div class="text-muted small">CFA — repas / mois</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">50 000</div>
-                <div class="text-muted small">CFA — soins / mois</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: FAIRE UN DON -->
-    <section id="faire-un-don" class="mt-5">
-      <div class="row g-4">
-        <div class="col-lg-8">
-          <div class="card p-4">
-            <h4 class="mb-3">Faire un don</h4>
-
-            <div class="mb-3">
-              <label class="form-label">Montant suggéré</label>
-              <div class="d-flex gap-2 flex-wrap donation-amounts">
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="5000">5 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="10000">10 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="50000">50 000 CFA</button>
-                <button type="button" class="btn btn-outline-secondary amount-btn" data-amount="custom">Autre</button>
-              </div>
-            </div>
-
-            <div id="custom-wrapper" class="mb-3" style="display:none">
-              <label class="form-label">Montant personnalisé (CFA)</label>
-              <input id="customAmount" type="number" class="form-control" min="100" placeholder="Ex : 7500">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Opérateur Mobile Money</label>
-              <div class="d-flex gap-2">
-                <div class="mm-operator p-2" data-op="mtn"><img src="mtn-logo.png" alt="" style="height:22px"> MTN</div>
-                <div class="mm-operator p-2" data-op="moov"><img src="moov-logo.png" alt="" style="height:22px"> Moov</div>
-                <div class="mm-operator p-2" data-op="celtiis"><img src="celtiis-logo.png" alt="" style="height:22px"> Celtiis</div>
-              </div>
-              <input type="hidden" id="selectedOperator" value="mtn">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Numéro Mobile Money</label>
-              <input id="mmPhone" type="tel" class="form-control" placeholder="Ex : 679123456" required>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Email (pour reçu)</label>
-              <input id="donorEmail" type="email" class="form-control" placeholder="email@exemple.com" required>
-            </div>
-
-            <div class="mb-3">
-              <button id="submitBtn" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Payer avec Mobile Money</button>
-            </div>
-
-            <small class="text-muted">Note : le traitement réel nécessite un endpoint serveur. Ici la soumission est simulée.</small>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="summary-box">
-            <h6>Résumé</h6>
-            <p class="mb-1"><strong id="summaryAmount">5 000 CFA</strong></p>
-            <p class="text-muted small mb-2" id="summaryNote">Kit scolaire</p>
-            <p class="mb-1"><strong id="summaryOperator">MTN</strong></p>
-            <p class="text-muted small mb-2" id="summaryPhone">Numéro : —</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="mt-5">
-      <div class="card p-3">
-        <h6>Contact</h6>
-        <p class="mb-0 text-muted">Email : contact@solidaritebenin.org — Téléphone : +229 00 00 00 00</p>
-      </div>
-    </section>
-
-    <footer class="text-center py-4 mt-4">
-      © 2025 Solidarité Bénin — Merci pour votre soutien
-    </footer>
-  </main>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Smooth scroll for internal links
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', (e) => {
-          const target = document.querySelector(a.getAttribute('href'));
-          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-      });
-
-      // Amount selection
-      const amountBtns = document.querySelectorAll('.amount-btn');
-      const customWrapper = document.getElementById('custom-wrapper');
-      const customInput = document.getElementById('customAmount');
-      const summaryAmount = document.getElementById('summaryAmount');
-      const summaryNote = document.getElementById('summaryNote');
-
-      function setAmount(val){
-        if(val === 'custom'){ customWrapper.style.display = 'block'; summaryAmount.textContent = 'Montant personnalisé'; summaryNote.textContent = ''; return; }
-        customWrapper.style.display = 'none';
-        summaryAmount.textContent = new Intl.NumberFormat('fr-FR').format(val) + ' CFA';
-        summaryNote.textContent = val == 5000 ? 'Kit scolaire' : val == 10000 ? 'Repas 1 mois' : val == 50000 ? 'Soins médicaux 1 mois' : '';
-      }
-
-      amountBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          amountBtns.forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline-primary'); });
-          btn.classList.remove('btn-outline-primary'); btn.classList.add('btn-primary');
-          setAmount(btn.dataset.amount);
-        });
-      });
-
-      // initial state
-      if(amountBtns.length){
-        amountBtns[0].classList.remove('btn-outline-primary');
-        amountBtns[0].classList.add('btn-primary');
-        setAmount(5000);
-      }
-
-      // Mobile Money operator selection
-      const mmOps = document.querySelectorAll('.mm-operator');
-      const selectedOperator = document.getElementById('selectedOperator');
-      const summaryOperator = document.getElementById('summaryOperator');
-      const summaryPhone = document.getElementById('summaryPhone');
-
-      mmOps.forEach(op => {
-        op.addEventListener('click', () => {
-          mmOps.forEach(x => x.classList.remove('active'));
-          op.classList.add('active');
-          selectedOperator.value = op.dataset.op;
-          summaryOperator.textContent = op.textContent.trim();
-        });
-      });
-      // default operator
-      const def = document.querySelector('.mm-operator[data-op="mtn"]');
-      if(def) def.classList.add('active');
-
-      // submit (simulated)
-      document.getElementById('submitBtn').addEventListener('click', () => {
-        const email = document.getElementById('donorEmail');
-        const phone = document.getElementById('mmPhone').value.trim();
-        let amountBtn = document.querySelector('.amount-btn.btn-primary');
-        let amount = amountBtn ? amountBtn.dataset.amount : '5000';
-        if(amount === 'custom'){ amount = parseInt(customInput.value,10) || 0; }
-        if(!email.checkValidity()){ alert('Entrez un email valide.'); email.focus(); return; }
-        if(!phone){ alert('Entrez votre numéro Mobile Money.'); return; }
-        summaryPhone.textContent = 'Numéro : ' + phone;
-        alert('Simulation : demande de paiement envoyée.\nMontant : ' + new Intl.NumberFormat('fr-FR').format(amount) + ' CFA\nOpérateur : ' + selectedOperator.value + '\nEmail : ' + email.value);
-      });
-    });
-  </script>
-</body>
-</html>
-// ...existing code...// ...existing code...
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Collecte de dons — Solidarité Bénin</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  <style>
-    :root{
-      --accent:#0f766e;
-      --accent-2:#06b6d4;
-      --muted:#6b7280;
-    }
-    body{ font-family: Inter, system-ui, Arial, sans-serif; background:#f8fafb; color:#0f172a; }
-    .site-header{ position:sticky; top:0; z-index:1020; background:#fff; box-shadow:0 6px 18px rgba(2,6,23,0.04); }
-    .brand-logo{ width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; display:flex;align-items:center;justify-content:center;font-weight:700; }
-    .hero{ background: linear-gradient(90deg, rgba(15,118,110,0.06), rgba(6,182,212,0.04)); border-radius:12px; padding:36px; margin-top:18px; box-shadow:0 10px 30px rgba(2,6,23,0.04); }
-    .hero h1{ font-weight:700; letter-spacing:-0.5px; }
-    .impact-card{ background:#fff; border-radius:10px; padding:18px; box-shadow:0 8px 24px rgba(2,6,23,0.03); }
-    .amount-btn{ border-radius:999px; }
-    .mm-operator{ cursor:pointer; border-radius:10px; padding:10px 12px; display:flex; gap:10px; align-items:center; border:1px solid #eef2f6; background:#fff; }
-    .mm-operator.active{ border-color:var(--accent); box-shadow:0 8px 20px rgba(15,118,110,0.06); transform:translateY(-2px); }
-    .summary-box{ background:#fff; border-radius:10px; padding:16px; box-shadow:0 8px 20px rgba(2,6,23,0.03); }
-    footer{ opacity:0.9 }
-    @media (max-width:767px){ .hero{ padding:20px; } }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="container py-2">
-      <nav class="navbar navbar-expand-lg p-0">
-        <a class="navbar-brand d-flex align-items-center gap-3" href="#accueil">
-          <div class="brand-logo">SB</div>
-          <div class="d-none d-sm-block">
-            <div style="font-weight:700">Collecte de dons</div>
-            <small class="text-muted">Solidarité Bénin</small>
-          </div>
-        </a>
-
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Basculer la navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto align-items-lg-center">
-            <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" href="#evenement">À propos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faire-un-don">Faire un don</a></li>
-          </ul>
-        </div>
-      </nav>
+<section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="./IMAGE/29781.jpg" alt="Enfants du Bénin" class="w-full h-full object-cover object-top">
+        <!-- Modifier cette ligne pour un dégradé plus prononcé -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/30"></div>
     </div>
-  </header>
-
-  <main class="container my-4" id="accueil">
-    <!-- HERO -->
-    <section class="hero d-flex align-items-center gap-4">
-      <div class="hero-left">
-        <h1 class="display-6">Collecte de dons</h1>
-        <p class="lead text-muted mb-3">Aidez les enfants défavorisés et orphelins du Bénin — éducation, repas, soins. Chaque don compte.</p>
-        <div class="d-flex gap-2 flex-wrap">
-          <a href="#faire-un-don" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Faire un don</a>
-          <a href="#evenement" class="btn btn-outline-primary">En savoir plus</a>
+    <div class="relative z-10 w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-2xl">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                        Aidons les orphelins du Bénin
+                    </h1>
+                    <p class="text-xl text-white/90 mb-8 leading-relaxed">
+                        Ensemble, nous pouvons offrir un avenir meilleur aux enfants orphelins de notre beau pays.
+                        Chaque don compte, chaque geste d'amour fait la différence dans leur vie.
+                    </p>
+                    <p class="text-lg text-white/80 mb-10">
+                        Je suis Viviane Blé, et je crois fermement que la solidarité béninoise peut transformer des
+                        vies. Rejoignez-moi dans cette noble mission.
+                    </p>
+                    <button
+                        class="bg-primary hover:bg-green-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg whitespace-nowrap">
+                        <span class="flex items-center gap-3">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-fill ri-lg"></i>
+                            </div>
+                            Faire un don maintenant
+                        </span>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="ms-auto d-none d-md-block text-center">
-        <img src="benin-children.jpg" alt="Enfants du Bénin" style="width:220px;height:140px;object-fit:cover;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,0.06)">
-      </div>
     </section>
 
-    <!-- SECTION 1: DÉTAIL DE L'ÉVÉNEMENT -->
-    <section id="evenement" class="mt-5">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <h2>À propos de la collecte</h2>
-          <p class="text-muted">Cette collecte finance des actions concrètes pour les enfants vulnérables du Bénin : kits scolaires, repas, soins médicaux et soutien aux orphelinats et familles d’accueil.</p>
-          <ul class="list-unstyled text-muted">
-            <li class="mb-2"><strong>Objectif :</strong> soutenir l'éducation et la santé des enfants</li>
-            <li class="mb-2"><strong>Période :</strong> collecte permanente</li>
-            <li class="mb-2"><strong>Transparence :</strong> reçus envoyés par email et rapports réguliers</li>
-          </ul>
-          <a href="#faire-un-don" class="btn btn-outline-success">Contribuer maintenant</a>
-        </div>
-        <div class="col-lg-6">
-          <div class="impact-card">
-            <h5 class="mb-3">L'impact de vos dons</h5>
-            <div class="row text-center">
-              <div class="col-4">
-                <div class="fw-bold">5 000</div>
-                <div class="text-muted small">CFA — kit scolaire</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">10 000</div>
-                <div class="text-muted small">CFA — repas / mois</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">50 000</div>
-                <div class="text-muted small">CFA — soins / mois</div>
-              </div>
+    <section id="apropos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">À propos de notre mission</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Une initiative béninoise pour soutenir nos enfants les plus vulnérables
+                </p>
             </div>
-          </div>
+
+            <div class="mt-16 grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-graduation-cap-line ri-2x text-primary"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Éducation</h4>
+                    <p class="text-gray-600">Fourniture de matériel scolaire, uniformes et frais de scolarité pour
+                        assurer l'avenir de nos enfants.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-heart-pulse-line ri-2x text-secondary"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Santé</h4>
+                    <p class="text-gray-600">Accès aux soins médicaux, vaccinations et suivi nutritionnel pour garantir
+                        leur bien-être.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-home-heart-line ri-2x text-red-500"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Logement</h4>
+                    <p class="text-gray-600">Amélioration des conditions de vie dans les orphelinats avec des dortoirs
+                        décents et sécurisés.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- SECTION 2: FAIRE UN DON -->
-    <section id="faire-un-don" class="mt-5">
-      <div class="row g-4">
-        <div class="col-lg-8">
-          <div class="card p-4">
-            <h4 class="mb-3">Faire un don</h4>
-
-            <div class="mb-3">
-              <label class="form-label">Montant suggéré</label>
-              <div class="d-flex gap-2 flex-wrap donation-amounts">
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="5000">5 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="10000">10 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="50000">50 000 CFA</button>
-                <button type="button" class="btn btn-outline-secondary amount-btn" data-amount="custom">Autre</button>
-              </div>
+    <section id="don" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Faire un don</h2>
+                <p class="text-xl text-gray-600">
+                    Votre générosité peut changer une vie. Choisissez le montant qui vous convient.
+                </p>
             </div>
 
-            <div id="custom-wrapper" class="mb-3" style="display:none">
-              <label class="form-label">Montant personnalisé (CFA)</label>
-              <input id="customAmount" type="number" class="form-control" min="100" placeholder="Ex : 7500">
+            <div class="bg-gray-50 rounded-2xl p-8 mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-8 text-center">Montants suggérés</h3>
+                
+
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-700 mb-2"> entrez votre montant
+                        personnalisé</label>
+                    <div class="relative">
+                        <input type="number" id="customAmount"
+                            class="w-full px-4 py-3 border border-gray-300 !rounded-button focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                            placeholder="Montant en FCFA">
+                        <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">FCFA</span>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-4">Méthode de paiement Mobile Money</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <button
+                            class="payment-method flex items-center p-4 border-2 border-gray-200 hover:border-primary !rounded-button transition-all duration-200">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-smartphone-line ri-lg text-white"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="font-semibold text-gray-900">MTN Mobile Money</div>
+
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                        <div class="w-6 h-6 flex items-center justify-center mr-2">
+                            <i class="ri-information-line text-primary"></i>
+                        </div>
+                        Instructions de paiement
+                    </h4>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <p><strong>Numéro de réception :</strong> +229 01 52 12 85 00</p>
+                        <p><strong>Nom du bénéficiaire :</strong> Viviane Blé</p>
+                        <p><strong>Référence :</strong> DON-ORPHELINS-BENIN</p>
+                    </div>
+                </div>
+
+                <button
+                    class="w-full bg-primary hover:bg-green-600 text-white py-4 px-6 !rounded-button font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg whitespace-nowrap">
+                    <span class="flex items-center justify-center gap-3">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-send-plane-fill ri-lg"></i>
+                        </div>
+                        Procéder au don
+                    </span>
+                </button>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Opérateur Mobile Money</label>
-              <div class="d-flex gap-2">
-                <div class="mm-operator p-2" data-op="mtn"><img src="mtn-logo.png" alt="" style="height:22px"> MTN</div>
-                <div class="mm-operator p-2" data-op="moov"><img src="moov-logo.png" alt="" style="height:22px"> Moov</div>
-                <div class="mm-operator p-2" data-op="celtiis"><img src="celtiis-logo.png" alt="" style="height:22px"> Celtiis</div>
-              </div>
-              <input type="hidden" id="selectedOperator" value="mtn">
+            <div class="text-center">
+                <p class="text-gray-600 mb-4">
+                    <strong>Besoin d'aide ?</strong> Contactez-nous au +229 01 69 12 03 27
+                </p>
+                <p class="text-sm text-gray-500">
+                    Tous les dons sont utilisés directement pour améliorer la vie des orphelins du Bénin. Transparence
+                    garantie.
+                </p>
             </div>
-
-            <div class="mb-3">
-              <label class="form-label">Numéro Mobile Money</label>
-              <input id="mmPhone" type="tel" class="form-control" placeholder="Ex : 679123456" required>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Email (pour reçu)</label>
-              <input id="donorEmail" type="email" class="form-control" placeholder="email@exemple.com" required>
-            </div>
-
-            <div class="mb-3">
-              <button id="submitBtn" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Payer avec Mobile Money</button>
-            </div>
-
-            <small class="text-muted">Note : le traitement réel nécessite un endpoint serveur. Ici la soumission est simulée.</small>
-          </div>
         </div>
-
-        <div class="col-lg-4">
-          <div class="summary-box">
-            <h6>Résumé</h6>
-            <p class="mb-1"><strong id="summaryAmount">5 000 CFA</strong></p>
-            <p class="text-muted small mb-2" id="summaryNote">Kit scolaire</p>
-            <p class="mb-1"><strong id="summaryOperator">MTN</strong></p>
-            <p class="text-muted small mb-2" id="summaryPhone">Numéro : —</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section id="contact" class="mt-5">
-      <div class="card p-3">
-        <h6>Contact</h6>
-        <p class="mb-0 text-muted">Email : contact@solidaritebenin.org — Téléphone : +229 00 00 00 00</p>
-      </div>
-    </section>
-
-    <footer class="text-center py-4 mt-4">
-      © 2025 Solidarité Bénin — Merci pour votre soutien
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Viviane Blé - Collecte pour les Orphelins du Bénin. Tous droits réservés.
+                </p>
+                <p class="text-gray-500 text-xs mt-2">
+                    Initiative béninoise pour la solidarité envers nos enfants orphelins
+                </p>
+            </div>
+        </div>
     </footer>
-  </main>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" crossorigin="anonymous"
+        src="./Collecte pour les Orphelins du Bénin - Viviane Blé_files/surveys.js.téléchargement"></script>
+    <script type="text/javascript" crossorigin="anonymous"
+        src="./Collecte pour les Orphelins du Bénin - Viviane Blé_files/config.js.téléchargement"></script>
+    <script type="text/javascript" crossorigin="anonymous"
+        src="./Collecte pour les Orphelins du Bénin - Viviane Blé_files/dead-clicks-autocapture.js.téléchargement"></script>
+    <script id="navigation-scroll">
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Smooth scroll for internal links
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', (e) => {
-          const target = document.querySelector(a.getAttribute('href'));
-          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 64;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
-      });
-
-      // Amount selection
-      const amountBtns = document.querySelectorAll('.amount-btn');
-      const customWrapper = document.getElementById('custom-wrapper');
-      const customInput = document.getElementById('customAmount');
-      const summaryAmount = document.getElementById('summaryAmount');
-      const summaryNote = document.getElementById('summaryNote');
-
-      function setAmount(val){
-        if(val === 'custom'){ customWrapper.style.display = 'block'; summaryAmount.textContent = 'Montant personnalisé'; summaryNote.textContent = ''; return; }
-        customWrapper.style.display = 'none';
-        summaryAmount.textContent = new Intl.NumberFormat('fr-FR').format(val) + ' CFA';
-        summaryNote.textContent = val == 5000 ? 'Kit scolaire' : val == 10000 ? 'Repas 1 mois' : val == 50000 ? 'Soins médicaux 1 mois' : '';
-      }
-
-      amountBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          amountBtns.forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline-primary'); });
-          btn.classList.remove('btn-outline-primary'); btn.classList.add('btn-primary');
-          setAmount(btn.dataset.amount);
+    </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Ferme le menu mobile quand on clique sur un lien
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.add('hidden');
         });
-      });
-
-      // initial state
-      if(amountBtns.length){
-        amountBtns[0].classList.remove('btn-outline-primary');
-        amountBtns[0].classList.add('btn-primary');
-        setAmount(5000);
-      }
-
-      // Mobile Money operator selection
-      const mmOps = document.querySelectorAll('.mm-operator');
-      const selectedOperator = document.getElementById('selectedOperator');
-      const summaryOperator = document.getElementById('summaryOperator');
-      const summaryPhone = document.getElementById('summaryPhone');
-
-      mmOps.forEach(op => {
-        op.addEventListener('click', () => {
-          mmOps.forEach(x => x.classList.remove('active'));
-          op.classList.add('active');
-          selectedOperator.value = op.dataset.op;
-          summaryOperator.textContent = op.textContent.trim();
-        });
-      });
-      // default operator
-      const def = document.querySelector('.mm-operator[data-op="mtn"]');
-      if(def) def.classList.add('active');
-
-      // submit (simulated)
-      document.getElementById('submitBtn').addEventListener('click', () => {
-        const email = document.getElementById('donorEmail');
-        const phone = document.getElementById('mmPhone').value.trim();
-        let amountBtn = document.querySelector('.amount-btn.btn-primary');
-        let amount = amountBtn ? amountBtn.dataset.amount : '5000';
-        if(amount === 'custom'){ amount = parseInt(customInput.value,10) || 0; }
-        if(!email.checkValidity()){ alert('Entrez un email valide.'); email.focus(); return; }
-        if(!phone){ alert('Entrez votre numéro Mobile Money.'); return; }
-        summaryPhone.textContent = 'Numéro : ' + phone;
-        alert('Simulation : demande de paiement envoyée.\nMontant : ' + new Intl.NumberFormat('fr-FR').format(amount) + ' CFA\nOpérateur : ' + selectedOperator.value + '\nEmail : ' + email.value);
-      });
     });
-  </script>
-</body>
-</html>
-// ...existing code...
-```// filepath: c:\Users\Benjamin\Desktop\don\index.html
-// ...existing code...
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Collecte de dons — Solidarité Bénin</title>
+});
+</script>
+    <script id="donation-interaction">
+        document.addEventListener('DOMContentLoaded', function () {
+            const donationAmounts = document.querySelectorAll('.donation-amount');
+            const customAmountInput = document.getElementById('customAmount');
+            const paymentMethods = document.querySelectorAll('.payment-method');
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+            let selectedAmount = null;
+            let selectedPayment = null;
 
-  <style>
-    :root{
-      --accent:#0f766e;
-      --accent-2:#06b6d4;
-      --muted:#6b7280;
-    }
-    body{ font-family: Inter, system-ui, Arial, sans-serif; background:#f8fafb; color:#0f172a; }
-    .site-header{ position:sticky; top:0; z-index:1020; background:#fff; box-shadow:0 6px 18px rgba(2,6,23,0.04); }
-    .brand-logo{ width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; display:flex;align-items:center;justify-content:center;font-weight:700; }
-    .hero{ background: linear-gradient(90deg, rgba(15,118,110,0.06), rgba(6,182,212,0.04)); border-radius:12px; padding:36px; margin-top:18px; box-shadow:0 10px 30px rgba(2,6,23,0.04); }
-    .hero h1{ font-weight:700; letter-spacing:-0.5px; }
-    .impact-card{ background:#fff; border-radius:10px; padding:18px; box-shadow:0 8px 24px rgba(2,6,23,0.03); }
-    .amount-btn{ border-radius:999px; }
-    .mm-operator{ cursor:pointer; border-radius:10px; padding:10px 12px; display:flex; gap:10px; align-items:center; border:1px solid #eef2f6; background:#fff; }
-    .mm-operator.active{ border-color:var(--accent); box-shadow:0 8px 20px rgba(15,118,110,0.06); transform:translateY(-2px); }
-    .summary-box{ background:#fff; border-radius:10px; padding:16px; box-shadow:0 8px 20px rgba(2,6,23,0.03); }
-    footer{ opacity:0.9 }
-    @media (max-width:767px){ .hero{ padding:20px; } }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="container py-2">
-      <nav class="navbar navbar-expand-lg p-0">
-        <a class="navbar-brand d-flex align-items-center gap-3" href="#accueil">
-          <div class="brand-logo">SB</div>
-          <div class="d-none d-sm-block">
-            <div style="font-weight:700">Collecte de dons</div>
-            <small class="text-muted">Solidarité Bénin</small>
-          </div>
-        </a>
+            donationAmounts.forEach(button => {
+                button.addEventListener('click', function () {
+                    donationAmounts.forEach(btn => {
+                        btn.classList.remove('border-primary', 'bg-primary/10');
+                        btn.classList.add('border-gray-200');
+                    });
 
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Basculer la navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+                    this.classList.remove('border-gray-200');
+                    this.classList.add('border-primary', 'bg-primary/10');
 
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto align-items-lg-center">
-            <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" href="#evenement">À propos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faire-un-don">Faire un don</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </header>
+                    const amount = this.querySelector('.text-2xl').textContent.replace(/\s/g, '');
+                    selectedAmount = amount;
+                    customAmountInput.value = amount;
+                });
+            });
 
-  <main class="container my-4" id="accueil">
-    <!-- HERO -->
-    <section class="hero d-flex align-items-center gap-4">
-      <div class="hero-left">
-        <h1 class="display-6">Collecte de dons</h1>
-        <p class="lead text-muted mb-3">Aidez les enfants défavorisés et orphelins du Bénin — éducation, repas, soins. Chaque don compte.</p>
-        <div class="d-flex gap-2 flex-wrap">
-          <a href="#faire-un-don" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Faire un don</a>
-          <a href="#evenement" class="btn btn-outline-primary">En savoir plus</a>
-        </div>
-      </div>
-      <div class="ms-auto d-none d-md-block text-center">
-        <img src="benin-children.jpg" alt="Enfants du Bénin" style="width:220px;height:140px;object-fit:cover;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,0.06)">
-      </div>
-    </section>
+            customAmountInput.addEventListener('input', function () {
+                if (this.value) {
+                    donationAmounts.forEach(btn => {
+                        btn.classList.remove('border-primary', 'bg-primary/10');
+                        btn.classList.add('border-gray-200');
+                    });
+                    selectedAmount = this.value;
+                }
+            });
 
-    <!-- SECTION 1: DÉTAIL DE L'ÉVÉNEMENT -->
-    <section id="evenement" class="mt-5">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <h2>À propos de la collecte</h2>
-          <p class="text-muted">Cette collecte finance des actions concrètes pour les enfants vulnérables du Bénin : kits scolaires, repas, soins médicaux et soutien aux orphelinats et familles d’accueil.</p>
-          <ul class="list-unstyled text-muted">
-            <li class="mb-2"><strong>Objectif :</strong> soutenir l'éducation et la santé des enfants</li>
-            <li class="mb-2"><strong>Période :</strong> collecte permanente</li>
-            <li class="mb-2"><strong>Transparence :</strong> reçus envoyés par email et rapports réguliers</li>
-          </ul>
-          <a href="#faire-un-don" class="btn btn-outline-success">Contribuer maintenant</a>
-        </div>
-        <div class="col-lg-6">
-          <div class="impact-card">
-            <h5 class="mb-3">L'impact de vos dons</h5>
-            <div class="row text-center">
-              <div class="col-4">
-                <div class="fw-bold">5 000</div>
-                <div class="text-muted small">CFA — kit scolaire</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">10 000</div>
-                <div class="text-muted small">CFA — repas / mois</div>
-              </div>
-              <div class="col-4">
-                <div class="fw-bold">50 000</div>
-                <div class="text-muted small">CFA — soins / mois</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function () {
+                    paymentMethods.forEach(btn => {
+                        btn.classList.remove('border-primary', 'bg-primary/5');
+                        btn.classList.add('border-gray-200');
+                    });
 
-    <!-- SECTION 2: FAIRE UN DON -->
-    <section id="faire-un-don" class="mt-5">
-      <div class="row g-4">
-        <div class="col-lg-8">
-          <div class="card p-4">
-            <h4 class="mb-3">Faire un don</h4>
+                    this.classList.remove('border-gray-200');
+                    this.classList.add('border-primary', 'bg-primary/5');
 
-            <div class="mb-3">
-              <label class="form-label">Montant suggéré</label>
-              <div class="d-flex gap-2 flex-wrap donation-amounts">
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="5000">5 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="10000">10 000 CFA</button>
-                <button type="button" class="btn btn-outline-primary amount-btn" data-amount="50000">50 000 CFA</button>
-                <button type="button" class="btn btn-outline-secondary amount-btn" data-amount="custom">Autre</button>
-              </div>
-            </div>
-
-            <div id="custom-wrapper" class="mb-3" style="display:none">
-              <label class="form-label">Montant personnalisé (CFA)</label>
-              <input id="customAmount" type="number" class="form-control" min="100" placeholder="Ex : 7500">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Opérateur Mobile Money</label>
-              <div class="d-flex gap-2">
-                <div class="mm-operator p-2" data-op="mtn"><img src="mtn-logo.png" alt="" style="height:22px"> MTN</div>
-                <div class="mm-operator p-2" data-op="moov"><img src="moov-logo.png" alt="" style="height:22px"> Moov</div>
-                <div class="mm-operator p-2" data-op="celtiis"><img src="celtiis-logo.png" alt="" style="height:22px"> Celtiis</div>
-              </div>
-              <input type="hidden" id="selectedOperator" value="mtn">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Numéro Mobile Money</label>
-              <input id="mmPhone" type="tel" class="form-control" placeholder="Ex : 679123456" required>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Email (pour reçu)</label>
-              <input id="donorEmail" type="email" class="form-control" placeholder="email@exemple.com" required>
-            </div>
-
-            <div class="mb-3">
-              <button id="submitBtn" class="btn" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none">Payer avec Mobile Money</button>
-            </div>
-
-            <small class="text-muted">Note : le traitement réel nécessite un endpoint serveur. Ici la soumission est simulée.</small>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="summary-box">
-            <h6>Résumé</h6>
-            <p class="mb-1"><strong id="summaryAmount">5 000 CFA</strong></p>
-            <p class="text-muted small mb-2" id="summaryNote">Kit scolaire</p>
-            <p class="mb-1"><strong id="summaryOperator">MTN</strong></p>
-            <p class="text-muted small mb-2" id="summaryPhone">Numéro : —</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="mt-5">
-      <div class="card p-3">
-        <h6>Contact</h6>
-        <p class="mb-0 text-muted">Email : contact@solidaritebenin.org — Téléphone : +229 00 00 00 00</p>
-      </div>
-    </section>
-
-    <footer class="text-center py-4 mt-4">
-      © 2025 Solidarité Bénin — Merci pour votre soutien
-    </footer>
-  </main>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Smooth scroll for internal links
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', (e) => {
-          const target = document.querySelector(a.getAttribute('href'));
-          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                    selectedPayment = this.querySelector('.font-semibold').textContent;
+                });
+            });
         });
-      });
+    </script>
 
-      // Amount selection
-      const amountBtns = document.querySelectorAll('.amount-btn');
-      const customWrapper = document.getElementById('custom-wrapper');
-      const customInput = document.getElementById('customAmount');
-      const summaryAmount = document.getElementById('summaryAmount');
-      const summaryNote = document.getElementById('summaryNote');
+    <script id="hero-cta-scroll">
+        document.addEventListener('DOMContentLoaded', function () {
+            const heroButton = document.querySelector('#accueil button');
 
-      function setAmount(val){
-        if(val === 'custom'){ customWrapper.style.display = 'block'; summaryAmount.textContent = 'Montant personnalisé'; summaryNote.textContent = ''; return; }
-        customWrapper.style.display = 'none';
-        summaryAmount.textContent = new Intl.NumberFormat('fr-FR').format(val) + ' CFA';
-        summaryNote.textContent = val == 5000 ? 'Kit scolaire' : val == 10000 ? 'Repas 1 mois' : val == 50000 ? 'Soins médicaux 1 mois' : '';
-      }
+            heroButton.addEventListener('click', function () {
+                const donSection = document.querySelector('#don');
+                const offsetTop = donSection.offsetTop - 64;
 
-      amountBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          amountBtns.forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline-primary'); });
-          btn.classList.remove('btn-outline-primary'); btn.classList.add('btn-primary');
-          setAmount(btn.dataset.amount);
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            });
         });
-      });
-
-      // initial state
-      if(amountBtns.length){
-        amountBtns[0].classList.remove('btn-outline-primary');
-        amountBtns[0].classList.add('btn-primary');
-        setAmount(5000);
-      }
-
-      // Mobile Money operator selection
-      const mmOps = document.querySelectorAll('.mm-operator');
-      const selectedOperator = document.getElementById('selectedOperator');
-      const summaryOperator = document.getElementById('summaryOperator');
-      const summaryPhone = document.getElementById('summaryPhone');
-
-      mmOps.forEach(op => {
-        op.addEventListener('click', () => {
-          mmOps.forEach(x => x.classList.remove('active'));
-          op.classList.add('active');
-          selectedOperator.value = op.dataset.op;
-          summaryOperator.textContent = op.textContent.trim();
-        });
-      });
-      // default operator
-      const def = document.querySelector('.mm-operator[data-op="mtn"]');
-      if(def) def.classList.add('active');
-
-      // submit (simulated)
-      document.getElementById('submitBtn').addEventListener('click', () => {
-        const email = document.getElementById('donorEmail');
-        const phone = document.getElementById('mmPhone').value.trim();
-        let amountBtn = document.querySelector('.amount-btn.btn-primary');
-        let amount = amountBtn ? amountBtn.dataset.amount : '5000';
-        if(amount === 'custom'){ amount = parseInt(customInput.value,10) || 0; }
-        if(!email.checkValidity()){ alert('Entrez un email valide.'); email.focus(); return; }
-        if(!phone){ alert('Entrez votre numéro Mobile Money.'); return; }
-        summaryPhone.textContent = 'Numéro : ' + phone;
-        alert('Simulation : demande de paiement envoyée.\nMontant : ' + new Intl.NumberFormat('fr-FR').format(amount) + ' CFA\nOpérateur : ' + selectedOperator.value + '\nEmail : ' + email.value);
-      });
-    });
-  </script>
-</body>
-</html>
-// ...existing code...
+    </script>
+    <script>
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_t9tkQZJiyi2ps9zUYm8TDsL6qXo4YmZx0Ot5rBlAlEd', {
+            api_host: 'https://us.i.posthog.com',
+            autocapture: false,
+            capture_pageview: false,
+            capture_pageleave: false,
+            capture_performance: {
+                web_vitals: false,
+            },
+            rageclick: false,
+        })
+        window.shareKey = 'QWXTNRuW-soHDXD66eO6xQ';
+        window.host = 'readdy.ai';
+    </script>
