@@ -6,67 +6,99 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collecte pour les Orphelins du Bénin - Viviane Blé</title>
-  <!-- Police -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Police -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-  <!-- Tailwind (ou remplacez par Bootstrap si vous préférez) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind (ou remplacez par Bootstrap si vous préférez) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.fedapay.com/checkout.js?v=1.1.2"></script>
 
-  <!-- Icônes (Remixicon) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <!-- Icônes (Remixicon) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Petites classes utilitaires pour .primary utilisées dans le HTML -->
+    <style>
+        :root {
+            --primary: #06b6d4;
+            --primary-dark: #0596ab;
+            --muted: #6b7280;
+        }
 
-  <!-- Petites classes utilitaires pour .primary utilisées dans le HTML -->
-  <style>
-    :root{ --primary:#06b6d4; --primary-dark:#0596ab; --muted:#6b7280; }
-    .text-primary{ color:var(--primary) !important; }
-    .bg-primary{ background:var(--primary) !important; }
-    .bg-primary-600{ background:var(--primary-dark) !important; }
-    .rounded-button{ border-radius:12px !important; }
-    .font-pacifico{ font-family:'Pacifico', cursive; }
-  </style>
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        .bg-primary {
+            background: var(--primary) !important;
+        }
+
+        .bg-primary-600 {
+            background: var(--primary-dark) !important;
+        }
+
+        .rounded-button {
+            border-radius: 12px !important;
+        }
+
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+    </style>
+
+
 </head>
 
 <body class="bg-white text-gray-900">
-<nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            <!-- Logo -->
-            <div class="font-['Pacifico'] text-2xl text-primary">Viviane Blé</div>
-            
-            <!-- Bouton menu mobile -->
-            <button class="md:hidden text-gray-500 hover:text-primary focus:outline-none" 
-                    onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
+    <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="font-['Pacifico'] text-2xl text-primary">Viviane Blé</div>
 
-            <!-- Menu desktop -->
-            <div class="hidden md:flex space-x-8">
-                <a href="#accueil" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Accueil</a>
-                <a href="#apropos" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">À propos</a>
-                <a href="#don" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Faire un don</a>
+                <!-- Bouton menu mobile -->
+                <button class="md:hidden text-gray-500 hover:text-primary focus:outline-none"
+                    onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <!-- Menu desktop -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#accueil"
+                        class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Accueil</a>
+                    <a href="#apropos"
+                        class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">À propos</a>
+                    <a href="#don"
+                        class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Faire un
+                        don</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Menu mobile -->
-    <div id="mobile-menu" class="hidden md:hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
-            <a href="#accueil" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">Accueil</a>
-            <a href="#apropos" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">À propos</a>
-            <a href="#don" class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">Faire un don</a>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
+                <a href="#accueil"
+                    class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">Accueil</a>
+                <a href="#apropos"
+                    class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">À
+                    propos</a>
+                <a href="#don"
+                    class="block px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors duration-200">Faire
+                    un don</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-        <img src="./IMAGE/29781.jpg" alt="Enfants du Bénin" class="w-full h-full object-cover object-top">
-        <!-- Modifier cette ligne pour un dégradé plus prononcé -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/30"></div>
-    </div>
-    <div class="relative z-10 w-full">
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="./IMAGE/29781.jpg" alt="Enfants du Bénin" class="w-full h-full object-cover object-top">
+            <!-- Modifier cette ligne pour un dégradé plus prononcé -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/30"></div>
+        </div>
+        <div class="relative z-10 w-full">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-2xl">
                     <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
@@ -142,35 +174,38 @@
             </div>
 
             <div class="bg-gray-50 rounded-2xl p-8 mb-12">
-                <h3 class="text-2xl font-semibold text-gray-900 mb-8 text-center">Montants suggérés</h3>
-                
+                <!-- <h3 class="text-2xl font-semibold text-gray-900 mb-8 text-center">Montants suggérés</h3> -->
+
 
                 <div class="mb-8">
-                    <label class="block text-sm font-medium text-gray-700 mb-2"> entrez votre montant
-                        personnalisé</label>
-                    <div class="relative">
-                        <input type="number" id="customAmount"
-                            class="w-full px-4 py-3 border border-gray-300 !rounded-button focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
-                            placeholder="Montant en FCFA">
-                        <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">FCFA</span>
-                    </div>
-                </div>
+                    <form id="payment-form" novalidate>
+                        <label for="amount">Montant (XOF)</label>
+                        <input id="amount" type="number" min="100" step="1" placeholder="Entrez un montant en XOF"
+                            required />
 
-                <div class="mb-8">
-                    <h4 class="text-lg font-semibold text-gray-900 mb-4">Méthode de paiement Mobile Money</h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <button
-                            class="payment-method flex items-center p-4 border-2 border-gray-200 hover:border-primary !rounded-button transition-all duration-200">
-                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4">
-                                <i class="ri-smartphone-line ri-lg text-white"></i>
-                            </div>
-                            <div class="text-left">
-                                <div class="font-semibold text-gray-900">MTN Mobile Money</div>
+                        <div class="hint">Montant minimum conseillé : 100 XOF</div>
 
-                            </div>
+                        <button id="pay-btn" type="submit"
+                            class="w-full bg-primary hover:bg-green-600 text-white py-4 px-6 !rounded-button font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg whitespace-nowrap">
+                            <span class="flex items-center justify-center gap-3">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-send-plane-fill ri-lg"></i>
+                                </div>
+                                Procéder au don
+                            </span>
                         </button>
-                    </div>
+                    </form>
+                    <form id="payment-form" novalidate>
+                        <label for="amount">Montant (XOF)</label>
+                        <input id="amount" type="number" min="100" step="1" placeholder="Entrez un montant en XOF"
+                            required />
+
+                        <div class="hint">Montant minimum conseillé : 100 XOF</div>
+
+                        <button id="pay-btn" type="submit">Payer</button>
+                    </form>
                 </div>
+
 
                 <div class="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-8">
                     <h4 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
@@ -181,20 +216,16 @@
                     </h4>
                     <div class="space-y-2 text-sm text-gray-700">
                         <p><strong>Numéro de réception :</strong> +229 01 52 12 85 00</p>
-                        <p><strong>Nom du bénéficiaire :</strong> Viviane Blé</p>
+                        <p><strong>Nom du bénéficiaire :</strong> Viviane BLE DJOSSOU</p>
+                        <br><br>
+                        
+                        <p><strong>Numéro de réception :</strong> +229 01 58 85 12 03</p>
+                        <p><strong>Nom du bénéficiaire :</strong> Benjamin AMOUSSOU</p>
+                        <br><br>
+                        
                         <p><strong>Référence :</strong> DON-ORPHELINS-BENIN</p>
                     </div>
                 </div>
-
-                <button
-                    class="w-full bg-primary hover:bg-green-600 text-white py-4 px-6 !rounded-button font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg whitespace-nowrap">
-                    <span class="flex items-center justify-center gap-3">
-                        <div class="w-6 h-6 flex items-center justify-center">
-                            <i class="ri-send-plane-fill ri-lg"></i>
-                        </div>
-                        Procéder au don
-                    </span>
-                </button>
             </div>
 
             <div class="text-center">
@@ -222,121 +253,72 @@
         </div>
     </footer>
 
-    <script type="text/javascript" crossorigin="anonymous"
-        src="./Collecte pour les Orphelins du Bénin - Viviane Blé_files/surveys.js.téléchargement"></script>
-    <script type="text/javascript" crossorigin="anonymous"
-        src="./Collecte pour les Orphelins du Bénin - Viviane Blé_files/config.js.téléchargement"></script>
-    <script type="text/javascript" crossorigin="anonymous"
-        src="./Collecte pour les Orphelins du Bénin - Viviane Blé_files/dead-clicks-autocapture.js.téléchargement"></script>
-    <script id="navigation-scroll">
+
+    <!-- <script src="feda.js"></script> -->
+
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-
-                    if (targetSection) {
-                        const offsetTop = targetSection.offsetTop - 64;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
+            // Ferme le menu mobile quand on clique sur un lien
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.add('hidden');
                 });
             });
         });
     </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Ferme le menu mobile quand on clique sur un lien
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.add('hidden');
-        });
-    });
-});
-</script>
-    <script id="donation-interaction">
+
+    
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const donationAmounts = document.querySelectorAll('.donation-amount');
-            const customAmountInput = document.getElementById('customAmount');
-            const paymentMethods = document.querySelectorAll('.payment-method');
+            const form = document.getElementById('payment-form');
+            const amountInput = document.getElementById('amount');
+            const payBtn = document.getElementById('pay-btn');
 
-            let selectedAmount = null;
-            let selectedPayment = null;
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();  // Empêche le comportement par défaut du formulaire
 
-            donationAmounts.forEach(button => {
-                button.addEventListener('click', function () {
-                    donationAmounts.forEach(btn => {
-                        btn.classList.remove('border-primary', 'bg-primary/10');
-                        btn.classList.add('border-gray-200');
+                // Récupérer le montant entré par l'utilisateur
+                const rawAmount = Number(amountInput.value);
+                const amount = Math.floor(rawAmount);  // Arrondir à l'entier inférieur
+
+                // Vérifier que le montant est valide (au moins 100 XOF)
+                if (!Number.isFinite(amount) || amount < 100) {
+                    alert('Veuillez entrer un montant valide d\'au moins 100 XOF');
+                    return;
+                }
+
+                // Désactiver le bouton de paiement et changer le texte pour indiquer le traitement
+                payBtn.disabled = true;
+                payBtn.textContent = 'Traitement en cours...';
+
+                try {
+                    // Initialisation du widget FedaPay avec la clé publique et les informations de transaction
+                    const widget = FedaPay.init({
+                        public_key: 'pk_live_jyBz1FD5bsz-ERvaOy7AP2H4', // Remplace par ta vraie clé publique
+                        transaction: {
+                            amount: amount,  // Montant de la transaction
+                            currency: { iso: 'XOF' },  // Devise (en XOF)
+                            description: 'Don — Orphelins du Bénin'  // Description de la transaction
+                        }
                     });
 
-                    this.classList.remove('border-gray-200');
-                    this.classList.add('border-primary', 'bg-primary/10');
-
-                    const amount = this.querySelector('.text-2xl').textContent.replace(/\s/g, '');
-                    selectedAmount = amount;
-                    customAmountInput.value = amount;
-                });
-            });
-
-            customAmountInput.addEventListener('input', function () {
-                if (this.value) {
-                    donationAmounts.forEach(btn => {
-                        btn.classList.remove('border-primary', 'bg-primary/10');
-                        btn.classList.add('border-gray-200');
-                    });
-                    selectedAmount = this.value;
+                    // Ouvrir le widget FedaPay pour le paiement
+                    widget.open();
+                } catch (err) {
+                    console.error('Erreur de paiement:', err);
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                } finally {
+                    // Réactiver le bouton de paiement une fois le traitement terminé
+                    payBtn.disabled = false;
+                    payBtn.textContent = 'Payer';
                 }
             });
-
-            paymentMethods.forEach(method => {
-                method.addEventListener('click', function () {
-                    paymentMethods.forEach(btn => {
-                        btn.classList.remove('border-primary', 'bg-primary/5');
-                        btn.classList.add('border-gray-200');
-                    });
-
-                    this.classList.remove('border-gray-200');
-                    this.classList.add('border-primary', 'bg-primary/5');
-
-                    selectedPayment = this.querySelector('.font-semibold').textContent;
-                });
-            });
         });
     </script>
 
-    <script id="hero-cta-scroll">
-        document.addEventListener('DOMContentLoaded', function () {
-            const heroButton = document.querySelector('#accueil button');
 
-            heroButton.addEventListener('click', function () {
-                const donSection = document.querySelector('#don');
-                const offsetTop = donSection.offsetTop - 64;
 
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-    <script>
-        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
-        posthog.init('phc_t9tkQZJiyi2ps9zUYm8TDsL6qXo4YmZx0Ot5rBlAlEd', {
-            api_host: 'https://us.i.posthog.com',
-            autocapture: false,
-            capture_pageview: false,
-            capture_pageleave: false,
-            capture_performance: {
-                web_vitals: false,
-            },
-            rageclick: false,
-        })
-        window.shareKey = 'QWXTNRuW-soHDXD66eO6xQ';
-        window.host = 'readdy.ai';
-    </script>
+
+
+
+</body>

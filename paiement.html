@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Faire un don — FedaPay</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            background: #f7fafc;
+            color: #111;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08)
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0 0 12px
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 6px
+        }
+
+        input[type=number] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px
+        }
+
+        .hint {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 8px
+        }
+
+        button {
+            margin-top: 16px;
+            width: 100%;
+            padding: 12px;
+            border: 0;
+            border-radius: 10px;
+            background: #06b6d4;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        button[disabled] {
+            opacity: 0.6;
+            cursor: not-allowed
+        }
+
+        .small {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 10px;
+            text-align: center
+        }
+    </style>
+    <!-- Widget FedaPay -->
+    <script src="https://cdn.fedapay.com/checkout.js?v=1.1.2"></script>
+</head>
+
+<body>
+    <main class="card" aria-labelledby="title">
+        <h1 id="title">Faire un don</h1>
+
+        <form id="payment-form" novalidate>
+            <label for="amount">Montant (XOF)</label>
+            <input id="amount" type="number" min="100" step="1" placeholder="Entrez un montant en XOF" required />
+
+            <div class="hint">Montant minimum conseillé : 100 XOF</div>
+
+            <button id="pay-btn" type="submit">Payer</button>
+        </form>
+
+        <div class="small">
+            &copy; 2024 Orphelins du Bénin. Tous droits réservés.
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('payment-form');
+            const amountInput = document.getElementById('amount');
+            const payBtn = document.getElementById('pay-btn');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();  // Empêche le comportement par défaut du formulaire
+
+                // Récupérer le montant entré par l'utilisateur
+                const rawAmount = Number(amountInput.value);
+                const amount = Math.floor(rawAmount);  // Arrondir à l'entier inférieur
+
+                // Vérifier que le montant est valide (au moins 100 XOF)
+                if (!Number.isFinite(amount) || amount < 100) {
+                    alert('Veuillez entrer un montant valide d\'au moins 100 XOF');
+                    return;
+                }
+
+                // Désactiver le bouton de paiement et changer le texte pour indiquer le traitement
+                payBtn.disabled = true;
+                payBtn.textContent = 'Traitement en cours...';
+
+                try {
+                    // Initialisation du widget FedaPay avec la clé publique et les informations de transaction
+                    const widget = FedaPay.init({
+                        public_key: 'pk_live_jyBz1FD5bsz-ERvaOy7AP2H4', // Remplace par ta vraie clé publique
+                        transaction: {
+                            amount: amount,  // Montant de la transaction
+                            currency: { iso: 'XOF' },  // Devise (en XOF)
+                            description: 'Don — Orphelins du Bénin'  // Description de la transaction
+                        }
+                    });
+
+                    // Ouvrir le widget FedaPay pour le paiement
+                    widget.open();
+                } catch (err) {
+                    console.error('Erreur de paiement:', err);
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                } finally {
+                    // Réactiver le bouton de paiement une fois le traitement terminé
+                    payBtn.disabled = false;
+                    payBtn.textContent = 'Payer';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
